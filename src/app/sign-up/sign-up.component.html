@@ -1,0 +1,100 @@
+<main class="form-main">
+    <h3>Register</h3>
+    <div class="center">
+    <form class="form-form"
+      [formGroup]="form">
+      <h2 style="color:blue; text-align:center">Registration</h2>
+      <div class="divide-input">
+      <mat-form-field>
+        <input matInput
+          #email
+          spellcheck="false"
+          placeholder="Email"
+          formControlName="email"  [(ngModel)]="Email">
+       
+        <mat-error>
+          {{ formErrors['email'] }}
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput
+          spellcheck="false"
+          placeholder="User name"
+          formControlName="userName" [(ngModel)]="username">
+        
+        <mat-error>
+          {{ formErrors['userName'] }}
+        </mat-error>
+      </mat-form-field>
+      </div>
+      <div formGroupName="passwordsGroup"
+        class="form-form">
+        <mat-form-field>
+          <input [type]="hidePassword ? 'password' : 'text'"
+            matInput
+            spellcheck="false"
+            placeholder="Password"
+            formControlName="password" 
+            [(ngModel)]="Pass">
+          <button mat-icon-button
+            tabindex="-1"
+            matSuffix
+            (click)="hidePassword = !hidePassword"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hidePassword">
+            <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+         
+          <mat-error>
+            {{ formErrors['password'] }}
+          </mat-error>
+        </mat-form-field>
+    
+  
+        <mat-form-field>
+          <input [type]="hidePassword ? 'password' : 'text'"
+            matInput
+            spellcheck="false"
+            placeholder="Confirm Password"
+            [errorStateMatcher]="errorMatcher"
+            formControlName="confirmPassword">
+          <button mat-icon-button
+            tabindex="-1"
+            matSuffix
+            (click)="hidePassword = !hidePassword"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hidePassword">
+            <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        
+          <mat-error>
+            {{ formErrors['confirmPassword'] ? formErrors['confirmPassword'] : formErrors['passwordsGroup'] }}
+          </mat-error>
+        </mat-form-field>
+    
+        <div class="form-button-row">
+          <button mat-raised-button
+            [disabled]="!form.valid"
+            (click)="registerClicked();"
+            color="primary"><i class="material-icons">
+              send
+              </i>Register & Access</button>
+  
+          
+        </div>
+      </div>
+      
+      
+    </form>
+</div>
+  </main>
+
+
+
+
+
+
+
+
+            

@@ -1,0 +1,14 @@
+.center{
+    margin: auto;
+   
+    padding: 50px;
+    border: 1px solid black;
+   
+    background-color: cyan;
+    height: auto;
+}
+
+.divide-input{
+    display: flex;
+    flex-direction: column;
+}

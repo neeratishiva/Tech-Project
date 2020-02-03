@@ -1,0 +1,37 @@
+
+<main class="form-main">
+ 
+  <div class="center">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+    <h2 style="color:blue; text-align:center">LogIn</h2>
+      <mat-form-field floatLabel="never" class="form-element">
+        <input type="text" matInput placeholder="Username" [(ngModel)]="username" formControlName="username">
+        <mat-error *ngIf="formGroup.controls['username'].invalid">
+          {{getError('user')}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field floatLabel="never" class="form-element">
+        <input type="password" matInput placeholder="Password" formControlName="password">
+        <mat-error *ngIf="!formGroup.controls['password'].valid">
+          {{getError('pass')}}
+        </mat-error>
+      </mat-form-field>
+
+      <div class="form-element">
+        <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Login</button>   
+      </div>
+    
+    <p style="float: left; ">Don't have an account?</p><span class="signUp-opt" routerLink="/register">SignUp</span>
+ 
+  </form>
+
+</div>
+
+</main>
+
+
+
+
+
+
